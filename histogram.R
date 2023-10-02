@@ -8,7 +8,7 @@ library(tidyverse)
 args = commandArgs(trailingOnly=TRUE)
 
 ### load the input file
-read_len <- read.table(file = args[1], sep = '\t', header = FALSE, col.names = c("count", "length"))
+read_len <- read.table(file = args[1], sep = '\t', header = FALSE, col.names = c("length", "count"))
 
 ### visualization
 ggplot(read_len, aes(x = length, y = count)) +

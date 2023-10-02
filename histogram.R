@@ -1,10 +1,20 @@
 ### R script
-library(ggplot)
-library(tidyverse)
-args = commandArgs(trailingOnly=TRUE)
-read_len <- read_tsv(args[1], header = F, colnames = c("count", "length"))
-read_len %>% 
-ggplot(.,aes(x = count)) + 
-    geom_histogram()
 
+#### load R packages
+library(ggplot2)
+library(tidyverse)
+
+### read the parameters
+args = commandArgs(trailingOnly=TRUE)
+
+### load the input file
+read_len <- read.table(file = args[1], sep = '\t', header = FALSE, col.names = c("count", "length"))
+
+### visualization
+ggplot(read_len, aes(x = length, y = count)) +
+  geom_bar(stat = "identity", fill = "skyblue") +
+  labs(x = "Read Length", y = "Count") +
+  theme_bw()
+
+### save the figure
 ggsave(args[2])

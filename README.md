@@ -77,7 +77,17 @@ bash assignment1.sh
 
 ## Assignment 2
 
+Compute DNA damage and statistics for all 5 samples
+```
+conda activate metaDMG
 
+metaDMG config *.sort.bam --names ~/course/data/shared/mapping/taxonomy/names.dmp --nodes ~/course/data/shared/mapping/taxonomy/nodes.dmp --acc2tax ~/course/data/shared/mapping/taxonomy/acc2taxid.map.gz -m /usr/local/bin/metaDMG-cpp
+
+# Edit config to change parameters for exploration
+vim config.yaml
+
+metaDMG compute config.yaml 
+```
 
 ### Testing similarity score parameters
 We ran metaDMG with minimum similarity scores of 0.8 and 0.95. Somewhat counterintuitively, less taxa were present in the resulting data with a similarity score 0.8 compared to 0.95. We hypothesize that the lower similarity score minimum allows for more alignments which can lead to the LCA assigning the reads to a higher taxonomic level. 

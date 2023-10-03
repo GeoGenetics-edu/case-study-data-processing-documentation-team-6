@@ -8,13 +8,13 @@
 - step 4: Compress the output from step 4
 - step 5: Align reads to aegenmoics.db, covert alignment output into bam format and sort the bam file
 - step 6: Calculate read lengths
-- setp 7: Visualize the read length distribution
+- step 7: Visualize the read length distribution
 
 ### The shell script
 ```
 #!/bin/bash -l
 
-# load the working environment
+# step 1: load the working environment
 conda activate day1
 
 # MAIN LOOP: Executing for each file
@@ -22,31 +22,31 @@ conda activate day1
 for f in ~/course/data/day2/fastq/PRI-TJPGK-*
 do
 
-# Make symbolic link
+# step 2: Make symbolic link
 ln -s $f .
 BASENAME=$(basename $f)
 
-# Remove duplicates and reads less than 30 bp
+# step 3: Remove duplicates and reads less than 30 bp
 vsearch --fastx_uniques $BASENAME --fastqout ./${BASENAME/.fq.gz/.vs.fq} --minseqlength 30 --strand both
 
-# Compress output
+# step 4: Compress output
 gzip ${BASENAME/.fq.gz/.vs.fq}
 
-# Align reads to aegenmoics.db and covert to bam format
+# step 5a: Align reads to aegenmoics.db and covert to bam format
 bowtie2 --threads 5 -k 100 -x ~/course/data/shared/mapping/db/aegenomics.db -U ${BASENAME/.fq.gz/.vs.fq.gz} --no-unal | samtools view -bS - > ${BASENAME/.fq.gz/.bam}
 
-# Sort the bam file by read name
+# step 5b: Sort the bam file by read name
 samtools sort -n ${BASENAME/.fq.gz/.bam} > ${BASENAME/.fq.gz/.sort.bam}
 
-# Calculate read lengths
+# step 6: Calculate read lengths
 zcat ${BASENAME/.fq.gz/.vs.fq.gz} | awk 'NR%4 == 2 {lengths[length($0)]++} END {for (l in lengths) {print l"\t"lengths[l]}}' | sort -n > ${BASENAME/.fq.gz/.read_lengths.txt}
 
-# visualization 
+# step 7: visualization 
 Rscript histogram.R ${BASENAME/.fq.gz/.read_lengths.txt} ${BASENAME/.fq.gz/.read_lengths.png}
 
 done
 ```
-### The Rscript
+### The Rscript (step7)
 ```
 ### R script
 

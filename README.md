@@ -1,6 +1,7 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/-7_RZisP)
-# Assignment 1
-## The outline of the script
+# Assignment 
+## Assignment 1
+### The outline of the script
 - step 1: Load the working environment
 - step 2: Make symbolic link for all fastq file
 - step 3: Remove duplicates and reads' length less than 30 bp
@@ -9,9 +10,12 @@
 - step 6: Calculate read lengths
 - setp 7: Visualize the read length distribution
 
-### The script
+### The shell script
 ```
 #!/bin/bash -l
+
+# load the working environment
+conda activate day1
 
 # MAIN LOOP: Executing for each file
 # TEST ONE FILE: for f in ~/course/data/day2/fastq/PRI-TJPGK-CATN-96*
@@ -38,4 +42,31 @@ zcat ${BASENAME/.fq.gz/.vs.fq.gz} | awk 'NR%4 == 2 {lengths[length($0)]++} END {
 Rscript histogram.R ${BASENAME/.fq.gz/.read_lengths.txt} ${BASENAME/.fq.gz/.read_lengths.png}
 
 done
+```
+### The Rscript
+```
+### R script
+
+#### load R packages
+library(ggplot2)
+
+### read the parameters
+args = commandArgs(trailingOnly=TRUE)
+
+### load the input file
+read_len <- read.table(file = args[1], sep = '\t', header = FALSE, col.names = c("length", "count"))
+
+### visualization
+ggplot(read_len, aes(x = length, y = count)) +
+  geom_bar(stat = "identity", fill = "skyblue") +
+  labs(x = "Read Length", y = "Count") +
+  theme_bw()
+
+### save the figure
+ggsave(args[2])
+```
+
+### Run the shell script
+```
+bash assignment1.sh
 ```

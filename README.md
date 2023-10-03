@@ -80,7 +80,7 @@ bash assignment1.sh
 
 
 ### Testing similarity score parameters
-We ran metaDMG with minimum similarity scores of 0.8 and 0.95. Somewhat counterintuitively, less taxa were present in the resulting data with a similarity score 0.8. We hypothesize that the lower similarity score minimum allows for more alignments which can lead to the LCA assigning the reads to a higher taxonomic level. 
+We ran metaDMG with minimum similarity scores of 0.8 and 0.95. Somewhat counterintuitively, less taxa were present in the resulting data with a similarity score 0.8 compared to 0.95. We hypothesize that the lower similarity score minimum allows for more alignments which can lead to the LCA assigning the reads to a higher taxonomic level. 
 
 ### Testing bayesian estimation
 ... still running ...

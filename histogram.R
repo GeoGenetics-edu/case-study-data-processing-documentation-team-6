@@ -2,7 +2,6 @@
 
 #### load R packages
 library(ggplot2)
-library(tidyverse)
 
 ### read the parameters
 args = commandArgs(trailingOnly=TRUE)

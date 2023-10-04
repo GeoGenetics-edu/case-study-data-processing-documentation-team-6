@@ -178,5 +178,5 @@ pathPhynder -s all -t 100 -i Mafft_All_BEAST4.nwk -p tree_data/taxa_pathphynder_
 
 ##### Neighborhood joining tree
 
-[fst_tree.pdf](https://github.com/GeoGenetics-edu/case-study-data-processing-documentation-team-6/files/12804687/fst_tree.pdf)
+![fst_tree png-1](https://github.com/GeoGenetics-edu/case-study-data-processing-documentation-team-6/assets/2534009/afbd67d0-8f16-4303-b85a-2a90261c34dd)
 

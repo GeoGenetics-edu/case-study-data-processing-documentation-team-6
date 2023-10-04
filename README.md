@@ -86,7 +86,10 @@ metaDMG config *.sort.bam --names ~/course/data/shared/mapping/taxonomy/names.dm
 # Edit config to change parameters for exploration
 vim config.yaml
 
-metaDMG compute config.yaml 
+metaDMG compute config.yaml
+
+# And output as a csv
+metaDMG convert --output metaDMGresults.csv --add-fit-predictions
 ```
 
 ### Testing similarity score parameters

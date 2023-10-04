@@ -134,9 +134,9 @@ python ./get_consensus.txt All_ref_only_realigned.fa Cons_Aln_mafft_taxa_referen
 conda activate day1
 bwa index Cons_Aln_mafft_taxa_references.fa
 
-bwa aln -l 1024 -n 0.001 -t 5 ./Cons_Aln_mafft_taxa_references.fa ./PRI-DJYLO-VM-17-3-1-8-iPCR2_S4_L001_R1_001.lca.txt.Ovis.fq | bwa samse ./Cons_Aln_mafft_taxa_references.fa  - ./PRI-DJYLO-VM-17-3-1-8-iPCR2_S4_L001_R1_001.lca.txt.Ovis.fq | samtools view -F 4 -q 25 -@ 5 -uS - | samtools sort -@ 5 -o lPRI-DJYLO-VM-17-3-1-8-iPCR2_S4_L001_R1_001.lca.txt.Ovis.sort.bam
+bwa aln -l 1024 -n 0.001 -t 5 ./Cons_Aln_mafft_taxa_references.fa ./PRI-DJYLO-VM-17-3-1-8-iPCR2_S4_L001_R1_001.lca.txt.Ovis.fq | bwa samse ./Cons_Aln_mafft_taxa_references.fa  - ./PRI-DJYLO-VM-17-3-1-8-iPCR2_S4_L001_R1_001.lca.txt.Ovis.fq | samtools view -F 4 -q 25 -@ 5 -uS - | samtools sort -@ 5 -o PRI-DJYLO-VM-17-3-1-8-iPCR2_S4_L001_R1_001.lca.txt.Ovis.sort.bam
 
-samtools view -c lPRI-DJYLO-VM-17-3-1-8-iPCR2_S4_L001_R1_001.lca.txt.Ovis.sort.bam
+samtools view -c PRI-DJYLO-VM-17-3-1-8-iPCR2_S4_L001_R1_001.lca.txt.Ovis.sort.bam
 
 git clone https://github.com/ruidlpm/pathPhynder.git
 touch ~/.bash_profile
@@ -152,7 +152,7 @@ pathPhynder -B -o ./branches.snp ./Mafft_All_BEAST4.nwk ./Mafft_All_references_f
 
 mamba install -c bioconda samtools
 pathPhynder -s prepare -i Mafft_All_BEAST4.nwk -p taxa_pathphynder_tree -f branches.snp -r Cons_Aln_mafft_taxa_references.fa
-pathPhynder -s all -t 100 -m transversions -i Mafft_All_BEAST4.nwk -p tree_data/taxa_pathphynder_tree -r Cons_Aln_mafft_taxa_references.fa -b lPRI-DJYLO-VM-17-3-1-8-iPCR2_S4_L001_R1_001.lca.txt.Ovis.sort.bam
-pathPhynder -s all -t 100 -i Mafft_All_BEAST4.nwk -p tree_data/taxa_pathphynder_tree -r Cons_Aln_mafft_taxa_references.fa -b lPRI-DJYLO-VM-17-3-1-8-iPCR2_S4_L001_R1_001.lca.txt.Ovis.sort.bam 
+pathPhynder -s all -t 100 -m transversions -i Mafft_All_BEAST4.nwk -p tree_data/taxa_pathphynder_tree -r Cons_Aln_mafft_taxa_references.fa -b PRI-DJYLO-VM-17-3-1-8-iPCR2_S4_L001_R1_001.lca.txt.Ovis.sort.bam
+pathPhynder -s all -t 100 -i Mafft_All_BEAST4.nwk -p tree_data/taxa_pathphynder_tree -r Cons_Aln_mafft_taxa_references.fa -b PRI-DJYLO-VM-17-3-1-8-iPCR2_S4_L001_R1_001.lca.txt.Ovis.sort.bam 
 
 ```

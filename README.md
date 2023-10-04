@@ -103,5 +103,6 @@ Alternative assignment from holi pipeline.
 `
 ~/course/data/vgan/bin/vgan euka -fq1 <(zcat *vs.fq.gz) -o all_samples -t 5 --euka_dir euka_dir/
 `
+Ursidae was not detected because the reads added to the query dataset were extracted from a competitively matched dataset so conserved regions of the mitochondria were missing, causing `euka` to label the poor breadth of coveraged reads as contaminants.
 
-Found Bovidae which was not present in holi results. This is due to the absence of Bovidae in the reference database used in holi. Ursidae was not detected because the reads added to the query dataset were extracted from a competitively matched dataset so conserved regions of the mitochondria were missing, causing `euka` to label the reads as contaminants.
+Found Bovidae which was not present in holi results. This is due to the absence of Bovidae in the reference database used in holi.

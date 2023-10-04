@@ -156,3 +156,9 @@ pathPhynder -s all -t 100 -m transversions -i Mafft_All_BEAST4.nwk -p tree_data/
 pathPhynder -s all -t 100 -i Mafft_All_BEAST4.nwk -p tree_data/taxa_pathphynder_tree -r Cons_Aln_mafft_taxa_references.fa -b PRI-DJYLO-VM-17-3-1-8-iPCR2_S4_L001_R1_001.lca.txt.Ovis.sort.bam 
 
 ```
+### Populations genomics
+
+
+- Which populations are separated on the first few PCs?
+- Where do the ancient bear samples fall, and how can we interpret their position?
+- Is there any difference in PCA positions between the three bear samples, and if so, what could be the interpretation?

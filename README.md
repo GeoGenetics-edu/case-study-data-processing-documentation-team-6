@@ -94,3 +94,14 @@ We ran metaDMG with minimum similarity scores of 0.8 and 0.95. Somewhat counteri
 
 ### Testing bayesian estimation
 ... still running ...
+
+## Assignment 3
+
+### euka
+Alternative assignment from holi pipeline. 
+
+`
+~/course/data/vgan/bin/vgan euka -fq1 <(zcat *vs.fq.gz) -o all_samples -t 5 --euka_dir euka_dir/
+`
+
+Found Bovidae which was not present in holi results. This is due to the absence of Bovidae in the reference database used in holi. Ursidae was not detected because the reads added to the query dataset were extracted from a competitively matched dataset so conserved regions of the mitochondria were missing, causing `euka` to label the reads as contaminants.

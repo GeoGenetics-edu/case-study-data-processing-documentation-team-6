@@ -105,4 +105,6 @@ Alternative assignment from holi pipeline.
 `
 Ursidae was not detected because the reads added to the query dataset were extracted from a competitively matched dataset so conserved regions of the mitochondria were missing, causing `euka` to label the poor breadth of coveraged reads as contaminants.
 
-Found Bovidae which was not present in holi results. This is due to the absence of Bovidae in the reference database used in holi.
+Found Bovidae which was not present in holi results. This is due to the absence of Bovidae in the reference database used in holi:
+
+`zgrep NC_001941 ~/course/data/shared/taxonomy/acc2taxid.map.gz`

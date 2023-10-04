@@ -175,3 +175,8 @@ pathPhynder -s all -t 100 -i Mafft_All_BEAST4.nwk -p tree_data/taxa_pathphynder_
   All populations are well differentiated with PC1 and PC2.
 - Where do the ancient bear samples fall, and how can we interpret their position?
 - Is there any difference in PCA positions between the three bear samples, and if so, what could be the interpretation?
+
+##### Neighborhood joining tree
+
+[fst_tree.pdf](https://github.com/GeoGenetics-edu/case-study-data-processing-documentation-team-6/files/12804687/fst_tree.pdf)
+

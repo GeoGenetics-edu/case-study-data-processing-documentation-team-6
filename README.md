@@ -160,14 +160,18 @@ pathPhynder -s all -t 100 -i Mafft_All_BEAST4.nwk -p tree_data/taxa_pathphynder_
 
 #### Including polar bear in calculting PC space
 - Which populations are separated on the first few PCs?
+  
   Polar bears are separated from all other bears on PC1 which dominates the space.
 - Where do the ancient bear samples fall, and how can we interpret their position?
+  
   The ancient bears samples cluster with all black bears on PC1, Kenai samples on PC2, and East and West on PC4
 - Is there any difference in PCA positions between the three bear samples, and if so, what could be the interpretation?
+  
   They fall roughly in the same space with UE1605 slighly closer to polar bears on PC1
 
 #### Excluding polar bear in calculating PC space
 - Which populations are separated on the first few PCs?
+  
   All populations are well differentiated with PC1 and PC2.
 - Where do the ancient bear samples fall, and how can we interpret their position?
 - Is there any difference in PCA positions between the three bear samples, and if so, what could be the interpretation?

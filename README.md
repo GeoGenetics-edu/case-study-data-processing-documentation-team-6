@@ -100,6 +100,10 @@ We ran metaDMG with minimum similarity scores of 0.8 and 0.95. Somewhat counteri
 
 ## Assignment 3
 
+### aDNA authentication 
+
+Answers here..
+
 ### euka
 Alternative assignment from holi pipeline. 
 

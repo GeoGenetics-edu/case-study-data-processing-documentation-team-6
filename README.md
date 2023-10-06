@@ -188,12 +188,48 @@ pathPhynder -s all -t 100 -i Mafft_All_BEAST4.nwk -p tree_data/taxa_pathphynder_
 ## Day 5
 ### Pathogen
 #### Read mapping
+  ```
+  ### build the bowtie2 index
+  bowtie2-build GCF_000009065.1_ASM906v1_genomic.fna GCF_000009065.1_ASM906v1
+  bowtie2-build GCF_000834295.1_ASM83429v1_genomic.fna GCF_000834295.1_ASM83429v1
+  bowtie2-build GCF_009730055.1_ASM973005v1_genomic.fna GCF_009730055.1_ASM973005v1
+  ### mapping
+  bowtie2 -x GCF_000009065.1_ASM906v1 -p 4 --end-to-end -U RISE505.fq.gz | \
+  samtools view -bh | \
+  samtools sort - > RISE505.GCF_000009065.1_ASM906v1.mapped.sort.bam
+  ```
 - What is the average coverage we obtained on the main chromosome?​​
+  ```
+  samtools coverage RISE505.GCF_000009065.1_ASM906v1.mapped.sort.bam
+  ```
+  Around 8.82638
 - What fraction of the mapped reads were duplicates?
+  ```
+  samtools rmdup -s RISE505.GCF_000009065.1_ASM906v1.mapped.sort.bam  RISE505.GCF_000009065.1_ASM906v1.mapped.sort.rmdup.bam
+  ```
+  ~ 11%
 - How much was the coverage reduced?
+  ```
+  samtools coverage RISE505.GCF_000009065.1_ASM906v1.mapped.sort.rmdup.bam
+  # 7.91458
+  ```
+  0.9118
 - Does the coverage look even across all contigs?​​
+  ```
+  samtools coverage -m RISE505.GCF_000009065.1_ASM906v1.mapped.sort.rmdup.bam
+  ```
+  those reads mapped into the third chromosome (NC_003134.1) look uneven across the genome.
+  
 #### Damage estimates
 - Are the damage patterns consistent with ancient Yersinia DNA?​​
+  ```
+  bowtie2 -x GCF_000834295.1_ASM83429v1 -p 4 --end-to-end -U RISE505.fq.gz | samtools view -bh | samtools sort - | samtools rmdup -s - RISE505.GCF_000834295.1_ASM83429v1.mapped.sort.rmdup.bam
+  bowtie2 -x GCF_009730055.1_ASM973005v1 -p 4 --end-to-end -U RISE505.fq.gz | samtools view -bh | samtools sort - | samtools rmdup -s - RISE505.GCF_009730055.1_ASM973005v1.mapped.sort.rmdup.bam
+  mapDamage -i RISE505.GCF_000009065.1_ASM906v1.mapped.sort.rmdup.bam -r GCF_000009065.1_ASM906v1_genomic.fna --no-stats -d RISE505.GCF_000009065.1_ASM906v1
+  mapDamage -i RISE505.GCF_000834295.1_ASM83429v1.mapped.sort.rmdup.bam -r GCF_000834295.1_ASM83429v1_genomic.fna --no-stats -d RISE505.GCF_000834295.1_ASM83429v1
+  mapDamage -i RISE505.GCF_009730055.1_ASM973005v1.mapped.sort.rmdup.bam -r GCF_009730055.1_ASM973005v1_genomic.fna --no-stats -d RISE505.GCF_009730055.1_ASM973005v1
+  ```
   
 #### Detailed coverage statistics
+
 

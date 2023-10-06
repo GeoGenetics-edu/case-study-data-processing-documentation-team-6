@@ -184,3 +184,16 @@ pathPhynder -s all -t 100 -i Mafft_All_BEAST4.nwk -p tree_data/taxa_pathphynder_
 
 ![fst_tree png-1](https://github.com/GeoGenetics-edu/case-study-data-processing-documentation-team-6/assets/2534009/afbd67d0-8f16-4303-b85a-2a90261c34dd)
 
+
+## Day 5
+### Pathogen
+#### Read mapping
+- What is the average coverage we obtained on the main chromosome?​​
+- What fraction of the mapped reads were duplicates?
+- How much was the coverage reduced?
+- Does the coverage look even across all contigs?​​
+#### Damage estimates
+- Are the damage patterns consistent with ancient Yersinia DNA?​​
+  
+#### Detailed coverage statistics
+

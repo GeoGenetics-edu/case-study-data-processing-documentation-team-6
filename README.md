@@ -97,7 +97,7 @@ We ran metaDMG with minimum similarity scores of 0.8 and 0.95. Somewhat counteri
 
 ### Testing bayesian estimation
 - required lot of running time
-- filter out more taxa which is significant damage in the 
+- filter out more taxa which is significant damage running by default.
 
 ## Assignment 3
 

@@ -83,7 +83,7 @@ conda activate metaDMG
 
 metaDMG config *.sort.bam --names ~/course/data/shared/mapping/taxonomy/names.dmp --nodes ~/course/data/shared/mapping/taxonomy/nodes.dmp --acc2tax ~/course/data/shared/mapping/taxonomy/acc2taxid.map.gz -m /usr/local/bin/metaDMG-cpp
 
-# Edit config to change parameters for exploration
+# Edit config to change parameters for exploration, here we tested the impact of similarity score (0.8 vs 0.95)
 vim config.yaml
 
 metaDMG compute config.yaml
@@ -96,13 +96,10 @@ metaDMG convert --output metaDMGresults.csv --add-fit-predictions
 We ran metaDMG with minimum similarity scores of 0.8 and 0.95. Somewhat counterintuitively, less taxa were present in the resulting data with a similarity score 0.8 compared to 0.95. We hypothesize that the lower similarity score minimum allows for more alignments which can lead to the LCA assigning the reads to a higher taxonomic level. 
 
 ### Testing bayesian estimation
-... still running ...
+- required lot of running time
+- filter out more taxa which is significant damage in the 
 
 ## Assignment 3
-
-### aDNA authentication 
-
-Answers here..
 
 ### euka
 Alternative assignment from holi pipeline. 

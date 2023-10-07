@@ -11,7 +11,7 @@
 - step 7: Visualize the read length distribution
 
 ### The shell script
-```
+```sh
 #!/bin/bash -l
 
 # step 1: load the working environment
@@ -47,7 +47,7 @@ Rscript histogram.R ${BASENAME/.fq.gz/.read_lengths.txt} ${BASENAME/.fq.gz/.read
 done
 ```
 ### The Rscript (step7)
-```
+```R
 ### R script
 
 #### load R packages
@@ -70,7 +70,7 @@ ggsave(args[2])
 ```
 
 ### Run the shell script
-```
+```sh
 bash assignment1.sh
 ```
 
@@ -78,7 +78,7 @@ bash assignment1.sh
 ## Assignment 2
 
 Compute DNA damage and statistics for all 5 samples
-```
+```sh
 conda activate metaDMG
 
 metaDMG config *.sort.bam --names ~/course/data/shared/mapping/taxonomy/names.dmp --nodes ~/course/data/shared/mapping/taxonomy/nodes.dmp --acc2tax ~/course/data/shared/mapping/taxonomy/acc2taxid.map.gz -m /usr/local/bin/metaDMG-cpp
@@ -104,9 +104,9 @@ We ran metaDMG with minimum similarity scores of 0.8 and 0.95. Somewhat counteri
 ### euka
 Alternative assignment from holi pipeline. 
 
-`
+```sh
 ~/course/data/vgan/bin/vgan euka -fq1 <(zcat *vs.fq.gz) -o all_samples -t 5 --euka_dir euka_dir/
-`
+```
 Ursidae was not detected because the reads added to the query dataset were extracted from a competitively matched dataset so conserved regions of the mitochondria were missing, causing `euka` to label the poor breadth of coveraged reads as contaminants.
 
 Found Bovidae which was not present in holi results. This is due to the absence of Bovidae in the reference database used in holi:
@@ -114,7 +114,7 @@ Found Bovidae which was not present in holi results. This is due to the absence 
 `zgrep NC_001941 ~/course/data/shared/taxonomy/acc2taxid.map.gz`
 
 ### pathPhynder
-```
+```sh
 conda activate day2
 
 mamba install unzip
@@ -185,7 +185,7 @@ pathPhynder -s all -t 100 -i Mafft_All_BEAST4.nwk -p tree_data/taxa_pathphynder_
 ## Day 5
 ### Pathogen
 #### Read mapping
-  ```
+  ```sh
   ### build the bowtie2 index
   bowtie2-build GCF_000009065.1_ASM906v1_genomic.fna GCF_000009065.1_ASM906v1
   bowtie2-build GCF_000834295.1_ASM83429v1_genomic.fna GCF_000834295.1_ASM83429v1
@@ -201,25 +201,25 @@ pathPhynder -s all -t 100 -i Mafft_All_BEAST4.nwk -p tree_data/taxa_pathphynder_
   ```
   Around 8.82638
 - What fraction of the mapped reads were duplicates?
-  ```
+  ```sh
   samtools rmdup -s RISE505.GCF_000009065.1_ASM906v1.mapped.sort.bam  RISE505.GCF_000009065.1_ASM906v1.mapped.sort.rmdup.bam
   ```
   ~ 11%
 - How much was the coverage reduced?
-  ```
+  ```sh
   samtools coverage RISE505.GCF_000009065.1_ASM906v1.mapped.sort.rmdup.bam
   # 7.91458
   ```
   0.9118
 - Does the coverage look even across all contigs?​​
-  ```
+  ```sh
   samtools coverage -m RISE505.GCF_000009065.1_ASM906v1.mapped.sort.rmdup.bam
   ```
   those reads mapped into the third chromosome (NC_003134.1) look uneven across the genome.
   
 #### Damage estimates
 - Are the damage patterns consistent with ancient Yersinia DNA?​​
-  ```
+  ```sh
   bowtie2 -x GCF_000834295.1_ASM83429v1 -p 4 --end-to-end -U RISE505.fq.gz | samtools view -bh | samtools sort - | samtools rmdup -s - RISE505.GCF_000834295.1_ASM83429v1.mapped.sort.rmdup.bam
   bowtie2 -x GCF_009730055.1_ASM973005v1 -p 4 --end-to-end -U RISE505.fq.gz | samtools view -bh | samtools sort - | samtools rmdup -s - RISE505.GCF_009730055.1_ASM973005v1.mapped.sort.rmdup.bam
   mapDamage -i RISE505.GCF_000009065.1_ASM906v1.mapped.sort.rmdup.bam -r GCF_000009065.1_ASM906v1_genomic.fna --no-stats -d RISE505.GCF_000009065.1_ASM906v1
